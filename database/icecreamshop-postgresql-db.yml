@@ -1,0 +1,26 @@
+services:
+  icecreamshop-postgresql-db:
+    image: postgres:latest
+    container_name: icecreamshop-postgresql-db
+    environment:
+      POSTGRES_USER: icecreamshopadmin
+      POSTGRES_PASSWORD: icecreamshop123
+      POSTGRES_DB: icecreamshop-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - icecreamshop_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - icecreamshop-network
+
+volumes:
+  icecreamshop_data:
+
+networks:
+  icecreamshop-network:
+    external: true

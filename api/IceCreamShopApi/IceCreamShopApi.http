@@ -1,0 +1,6 @@
+@IceCreamShopApi_HostAddress = http://localhost:5252
+
+GET {{IceCreamShopApi_HostAddress}}/icecreamshop/
+Accept: application/json
+
+###
