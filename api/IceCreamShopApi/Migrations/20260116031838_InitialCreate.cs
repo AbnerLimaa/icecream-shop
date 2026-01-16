@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -6,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace IceCreamShopApi.Migrations
 {
     /// <inheritdoc />
-    public partial class AddPrimaryKeyToMenuItem : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,6 +25,21 @@ namespace IceCreamShopApi.Migrations
                 {
                     table.PrimaryKey("PK_tb_menu", x => x.menu_id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "tb_orders",
+                columns: table => new
+                {
+                    order_id = table.Column<int>(type: "integer", nullable: false),
+                    menu_id = table.Column<int>(type: "integer", nullable: false),
+                    client_name = table.Column<string>(type: "text", nullable: false),
+                    quantity = table.Column<int>(type: "integer", nullable: false),
+                    order_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tb_orders", x => new { x.order_id, x.menu_id });
+                });
         }
 
         /// <inheritdoc />
@@ -31,6 +47,9 @@ namespace IceCreamShopApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "tb_menu");
+
+            migrationBuilder.DropTable(
+                name: "tb_orders");
         }
     }
 }

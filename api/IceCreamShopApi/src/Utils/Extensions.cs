@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace IceCreamShopApi;
+namespace IceCreamShopApi.Utils;
 
 public static partial class Extensions
 {

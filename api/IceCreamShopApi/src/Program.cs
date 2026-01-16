@@ -1,4 +1,5 @@
-using IceCreamShopApi;
+using IceCreamShopApi.Repository;
+using IceCreamShopApi.Model;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,40 +40,3 @@ app.MapGet("/icecreamshop/orders", async (AppDbContext db) =>
     }).WithName("GetOrders");
 
 app.Run();
-
-public record Menu(List<MenuItem> MenuItemList);
-
-public record MenuItem(int MenuId, string Flavor, float Price);
-
-public record Order(List<OrderItem> OrderItemList);
-
-public record OrderItem(int OrderId, int MenuId, string ClientName, int Quantity, DateTime OrderDate);
-
-public class AppDbContext : DbContext
-{
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-    public DbSet<MenuItem> TbMenu => Set<MenuItem>();
-    public DbSet<OrderItem> TbOrders => Set<OrderItem>();
-    
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<MenuItem>().HasKey(m => m.MenuId);
-        modelBuilder.Entity<OrderItem>().HasKey(o => new { o.OrderId, o.MenuId });
-        
-        base.OnModelCreating(modelBuilder);
-
-        foreach (var entity in modelBuilder.Model.GetEntityTypes())
-        {
-            var tableName = entity.GetTableName();
-            if (!string.IsNullOrEmpty(tableName))
-            {
-                entity.SetTableName(tableName.ToSnakeCase());
-            }
-            
-            foreach (var property in entity.GetProperties())
-            {
-                property.SetColumnName(property.GetColumnName().ToSnakeCase());
-            }
-        }
-    }
-}
