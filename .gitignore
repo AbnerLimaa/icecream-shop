@@ -1,0 +1,5 @@
+# Ignore everything starting with .env in any directory
+**/.env*
+
+# Exception for .env.example in any directory
+!**/.env.example

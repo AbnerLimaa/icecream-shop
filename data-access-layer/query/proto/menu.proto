@@ -1,0 +1,21 @@
+syntax = "proto3";
+package menu;
+option go_package = "./menu-proto";
+
+service MenuService {
+  rpc GetMenu (MenuRequest) returns (MenuResponse);
+}
+
+message MenuRequest {
+
+}
+
+message MenuResponse {
+  repeated MenuItem items = 1;
+}
+
+message MenuItem {
+  int32 menu_id = 1;
+  string flavor = 2;
+  float price = 3;
+}
