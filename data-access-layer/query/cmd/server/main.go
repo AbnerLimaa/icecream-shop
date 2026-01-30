@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"github.com/AbnerLimaa/icecream-shop/data-access-layer/query/internal/service"
-	menuPb "github.com/AbnerLimaa/icecream-shop/data-access-layer/query/proto/menu-proto"
+	menuPb "github.com/AbnerLimaa/icecream-shop/data-access-layer/query/proto/menu/menu-proto"
 )
 
 func main() {

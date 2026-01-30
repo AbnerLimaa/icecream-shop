@@ -23,6 +23,7 @@ const (
 
 type MenuRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	MenuId        int32                  `protobuf:"varint,1,opt,name=menu_id,json=menuId,proto3" json:"menu_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -57,9 +58,17 @@ func (*MenuRequest) Descriptor() ([]byte, []int) {
 	return file_menu_proto_rawDescGZIP(), []int{0}
 }
 
+func (x *MenuRequest) GetMenuId() int32 {
+	if x != nil {
+		return x.MenuId
+	}
+	return 0
+}
+
 type MenuResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Items         []*MenuItem            `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	MenuName      string                 `protobuf:"bytes,1,opt,name=menu_name,json=menuName,proto3" json:"menu_name,omitempty"`
+	Items         []*MenuItem            `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -94,6 +103,13 @@ func (*MenuResponse) Descriptor() ([]byte, []int) {
 	return file_menu_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *MenuResponse) GetMenuName() string {
+	if x != nil {
+		return x.MenuName
+	}
+	return ""
+}
+
 func (x *MenuResponse) GetItems() []*MenuItem {
 	if x != nil {
 		return x.Items
@@ -103,7 +119,6 @@ func (x *MenuResponse) GetItems() []*MenuItem {
 
 type MenuItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MenuId        int32                  `protobuf:"varint,1,opt,name=menu_id,json=menuId,proto3" json:"menu_id,omitempty"`
 	Flavor        string                 `protobuf:"bytes,2,opt,name=flavor,proto3" json:"flavor,omitempty"`
 	Price         float32                `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -140,13 +155,6 @@ func (*MenuItem) Descriptor() ([]byte, []int) {
 	return file_menu_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MenuItem) GetMenuId() int32 {
-	if x != nil {
-		return x.MenuId
-	}
-	return 0
-}
-
 func (x *MenuItem) GetFlavor() string {
 	if x != nil {
 		return x.Flavor
@@ -166,12 +174,13 @@ var File_menu_proto protoreflect.FileDescriptor
 const file_menu_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"menu.proto\x12\x04menu\"\r\n" +
-	"\vMenuRequest\"4\n" +
-	"\fMenuResponse\x12$\n" +
-	"\x05items\x18\x01 \x03(\v2\x0e.menu.MenuItemR\x05items\"Q\n" +
-	"\bMenuItem\x12\x17\n" +
-	"\amenu_id\x18\x01 \x01(\x05R\x06menuId\x12\x16\n" +
+	"menu.proto\x12\x04menu\"&\n" +
+	"\vMenuRequest\x12\x17\n" +
+	"\amenu_id\x18\x01 \x01(\x05R\x06menuId\"Q\n" +
+	"\fMenuResponse\x12\x1b\n" +
+	"\tmenu_name\x18\x01 \x01(\tR\bmenuName\x12$\n" +
+	"\x05items\x18\x02 \x03(\v2\x0e.menu.MenuItemR\x05items\"8\n" +
+	"\bMenuItem\x12\x16\n" +
 	"\x06flavor\x18\x02 \x01(\tR\x06flavor\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x02R\x05price2?\n" +
 	"\vMenuService\x120\n" +

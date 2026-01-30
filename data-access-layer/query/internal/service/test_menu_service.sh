@@ -1,2 +1,2 @@
 #!/bin/zsh
-grpcurl -plaintext localhost:50051 menu.MenuService/GetMenu
+grpcurl -plaintext -d '{"menu_id": "1"}' localhost:50051 menu.MenuService/GetMenu
