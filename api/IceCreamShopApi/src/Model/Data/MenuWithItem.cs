@@ -1,0 +1,6 @@
+namespace IceCreamShopApi.Model.Data;
+
+public record MenuWithItem(int MenuId, string MenuName, int MenuItemId, string Flavor, float Price) : IData
+{
+    public MenuWithItem() : this(0, "", 0, "", 0.0f) { }
+}

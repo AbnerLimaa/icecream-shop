@@ -1,42 +1,37 @@
 using IceCreamShopApi.Repository;
-using IceCreamShopApi.Model;
-using Microsoft.EntityFrameworkCore;
+using IceCreamShopApi.Model.Logic.Query;
+using IceCreamShopApi.Patterns;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddOpenApi();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? 
-                       throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-
-builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString)
-    .LogTo(Console.WriteLine, LogLevel.Information));
+builder.Services.AddScoped<MenuRepository>();
+builder.Services.AddScoped<Mediator>();
 
 var app = builder.Build();
-
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
 app.UseHttpsRedirection();
 
-app.MapGet("/icecreamshop/menu", async (AppDbContext db) =>
-    {
-        var menuItemList = await db.TbMenu.ToListAsync();
-        return new Menu(menuItemList);
-    }).WithName("GetMenu");
+app.MapGet("/icecreamshop/menu/{id:int}", async (int id, Mediator mediator) =>
+{
+    var request = new GetMenuQuery(id);
+    var response = await mediator.MediateAsync(request);
+    return response;
+}).WithName("GetMenu");
 
-app.MapPost("/icecreamshop/order", async (AppDbContext db, Order order) => 
-    {
-        await db.TbOrders.AddRangeAsync(order.OrderItemList);
-        await db.SaveChangesAsync();
-    }).WithName("PostOrder");
+//app.MapPost("/icecreamshop/order", async (Mediator mediator, Order order) => 
+//    {
+//        await db.TbOrders.AddRangeAsync(order.OrderItemList);
+//        await db.SaveChangesAsync();
+//    }).WithName("PostOrder");
 
-app.MapGet("/icecreamshop/orders", async (AppDbContext db) => 
-    {
-        var orderItemList = await db.TbOrders.ToListAsync();
-        return new Order(orderItemList);
-    }).WithName("GetOrders");
+//app.MapGet("/icecreamshop/orders", async (Mediator mediator) => 
+//    {
+//        var orderItemList = await db.TbOrders.ToListAsync();
+//        return new Order(orderItemList);
+//    }).WithName("GetOrders");
 
 app.Run();
