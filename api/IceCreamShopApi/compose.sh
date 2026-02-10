@@ -1,2 +1,2 @@
 #!/bin/zsh
-docker compose -f icecreamshop-dotnet-api.yml up --build -d
+docker compose -f docker-compose.api.yml up --build -d

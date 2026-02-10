@@ -4,11 +4,12 @@ using IceCreamShopApi.Repository;
 
 namespace IceCreamShopApi.Patterns;
 
-public class Mediator(MenuRepository menuRepository)
+public class Mediator(MenuRepository menuRepository, OrderRepository orderRepository)
 {
     private readonly IReadOnlyDictionary<string, IHandler> _handlers = new Dictionary<string, IHandler>
     {
-        { GetMenuQuery.Id, new GetMenuQuery.Handler(menuRepository) }
+        { GetMenuQuery.Id, new GetMenuQuery.Handler(menuRepository) },
+        { GetAllOrdersByClientsQuery.Id, new GetAllOrdersByClientsQuery.Handler(orderRepository) }
     };
 
     public async Task<IResponse> MediateAsync(IRequest request)

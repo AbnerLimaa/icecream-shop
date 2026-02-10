@@ -1,4 +1,5 @@
 using IceCreamShopApi.Model.Data;
+using IceCreamShopApi.Patterns;
 
 namespace IceCreamShopApi.Model.ViewModel;
 
@@ -15,8 +16,8 @@ public class MenuWithItemListViewModel : IViewModel
         Name = name;
         Items = items;
     }
-
-    public class Adapter : IViewModelMultipleAdapter<MenuWithItem, MenuWithItemListViewModel>
+    
+    public class Adapter : IAdapter<IEnumerable<MenuWithItem>, MenuWithItemListViewModel>
     {
         public MenuWithItemListViewModel Adapt(IEnumerable<MenuWithItem> source)
         {

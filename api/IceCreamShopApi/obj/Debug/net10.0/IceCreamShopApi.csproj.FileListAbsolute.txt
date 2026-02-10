@@ -6,6 +6,7 @@
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/bin/Debug/net10.0/IceCreamShopApi.runtimeconfig.json
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/bin/Debug/net10.0/IceCreamShopApi.dll
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/bin/Debug/net10.0/IceCreamShopApi.pdb
+/Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/bin/Debug/net10.0/Dapper.dll
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/bin/Debug/net10.0/Microsoft.AspNetCore.OpenApi.dll
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/bin/Debug/net10.0/Microsoft.EntityFrameworkCore.dll
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/bin/Debug/net10.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -37,4 +38,3 @@
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/obj/Debug/net10.0/IceCreamShopApi.pdb
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/obj/Debug/net10.0/IceCreamShopApi.genruntimeconfig.cache
 /Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/obj/Debug/net10.0/ref/IceCreamShopApi.dll
-/Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/bin/Debug/net10.0/Dapper.dll

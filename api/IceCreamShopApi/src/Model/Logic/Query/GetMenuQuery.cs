@@ -1,4 +1,3 @@
-using IceCreamShopApi.Model.Data;
 using IceCreamShopApi.Model.ViewModel;
 using IceCreamShopApi.Repository;
 

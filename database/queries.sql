@@ -77,6 +77,18 @@ insert into tb_clients (client_id, client_name)
 values (1, 'Abner'),
        (2, 'Carol');
 
+insert into tb_orders (order_id, client_id, order_date, menu_item_id, quantity)
+values (1, 1, '2026-02-01', 6, 3),
+       (1, 1, '2026-02-01', 7, 1),
+       (1, 1, '2026-02-01', 12, 2),
+       (2, 1, '2026-02-05', 2, 5),
+       (2, 1, '2026-02-05', 15, 1),
+       (3, 2, '2026-02-03', 10, 2),
+       (3, 2, '2026-02-03', 13, 1),
+       (3, 2, '2026-02-03', 5, 2),
+       (3, 2, '2026-02-03', 3, 1)
+       
+
 select * from tb_menus;
 select * from tb_menu_items;
 select * from tb_clients;

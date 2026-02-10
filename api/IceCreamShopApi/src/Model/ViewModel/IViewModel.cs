@@ -1,6 +1,3 @@
 namespace IceCreamShopApi.Model.ViewModel;
 
-public interface IViewModel
-{
-    
-}
+public interface IViewModel;

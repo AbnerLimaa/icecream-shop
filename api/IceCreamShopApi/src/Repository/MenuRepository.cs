@@ -14,11 +14,10 @@ public class MenuRepository(IConfiguration configuration) : IRepository
 
     public async Task<IReadOnlyCollection<MenuWithItem>> GetMenuWithItemsAsync(int menuId)
     {
-        const string getMenuQuery = @"
+        const string query = @"
             SELECT 
                 menu.menu_id AS MenuId,
                 menu.menu_name AS MenuName,
-                items.menu_item_id AS MenuItemId,
                 items.flavor AS Flavor, 
                 items.price AS Price
             FROM tb_menu_items AS items
@@ -26,7 +25,7 @@ public class MenuRepository(IConfiguration configuration) : IRepository
             WHERE items.menu_id = @MenuId";
 
         using IDbConnection db = new NpgsqlConnection(_connectionString);
-        var rows = await db.QueryAsync<MenuWithItem>(getMenuQuery, new { MenuId = menuId });
+        var rows = await db.QueryAsync<MenuWithItem>(query, new { MenuId = menuId });
         
         return rows.ToList();
     }

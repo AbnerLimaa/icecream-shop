@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Its5prfdkWc=",
+  "dgSpecHash": "uIvrC0TPkww=",
   "success": true,
   "projectFilePath": "/Users/abnerlima/Documentos/Projetos/Pessoal/github/icecream-shop/api/IceCreamShopApi/IceCreamShopApi.csproj",
   "expectedPackageFiles": [
+    "/Users/abnerlima/.nuget/packages/aspnetcore.healthchecks.npgsql/9.0.0/aspnetcore.healthchecks.npgsql.9.0.0.nupkg.sha512",
     "/Users/abnerlima/.nuget/packages/dapper/2.1.66/dapper.2.1.66.nupkg.sha512",
     "/Users/abnerlima/.nuget/packages/microsoft.aspnetcore.openapi/9.0.6/microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
     "/Users/abnerlima/.nuget/packages/microsoft.entityframeworkcore/10.0.0/microsoft.entityframeworkcore.10.0.0.nupkg.sha512",
