@@ -1,3 +1,4 @@
+using System.Globalization;
 using IceCreamShopApi.Repository;
 using IceCreamShopApi.Model.Query;
 using IceCreamShopApi.Patterns;
@@ -11,6 +12,10 @@ builder.Services.AddScoped<Mediator>();
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(builder.Configuration.GetConnectionString("IceCreamShopDbConn")!);
+
+var cultureInfo = new CultureInfo("en-US");
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

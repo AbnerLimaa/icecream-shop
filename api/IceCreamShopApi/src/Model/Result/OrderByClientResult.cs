@@ -6,15 +6,17 @@ namespace IceCreamShopApi.Model.Result;
 public class OrderByClientResult : IResult
 {
     public string Flavor { get; }
-    
-    public string UnitPrice { get; }
+
+    private readonly float _unitPrice;
+    public string UnitPrice => $"{_unitPrice:C2}";
     
     public int Quantity { get; }
 
-    private OrderByClientResult(string  flavor, string unitPrice, int quantity)
+    private OrderByClientResult(string  flavor, float unitPrice, int quantity)
     {
+        _unitPrice = unitPrice;
+        
         Flavor = flavor;
-        UnitPrice = unitPrice;
         Quantity = quantity;
     }
 
@@ -22,9 +24,7 @@ public class OrderByClientResult : IResult
     {
         public OrderByClientResult Adapt(OrderByClient source)
         {
-            var price = $"{source.UnitPrice:C2}";
-
-            return new OrderByClientResult(source.Flavor, price, source.Quantity);
+            return new OrderByClientResult(source.Flavor, source.UnitPrice, source.Quantity);
         }
     }
 }
