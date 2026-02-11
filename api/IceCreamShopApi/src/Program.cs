@@ -1,5 +1,5 @@
 using IceCreamShopApi.Repository;
-using IceCreamShopApi.Model.Logic.Query;
+using IceCreamShopApi.Model.Query;
 using IceCreamShopApi.Patterns;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +23,7 @@ app.MapHealthChecks("/health");
 
 app.MapGet("/icecreamshop/menu/{id:int}", async (int id, Mediator mediator) =>
 {
-    var request = new GetMenuQuery(id);
+    var request = new GetMenuWithItemsQuery(id);
     var response = await mediator.MediateAsync(request);
     return response;
 }).WithName("GetMenu");

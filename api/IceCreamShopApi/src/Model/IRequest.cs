@@ -1,4 +1,4 @@
-namespace IceCreamShopApi.Model.Logic;
+namespace IceCreamShopApi.Model;
 
 public interface IRequest
 {

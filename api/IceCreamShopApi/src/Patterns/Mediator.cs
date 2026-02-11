@@ -1,5 +1,5 @@
-using IceCreamShopApi.Model.Logic;
-using IceCreamShopApi.Model.Logic.Query;
+using IceCreamShopApi.Model;
+using IceCreamShopApi.Model.Query;
 using IceCreamShopApi.Repository;
 
 namespace IceCreamShopApi.Patterns;
@@ -8,7 +8,7 @@ public class Mediator(MenuRepository menuRepository, OrderRepository orderReposi
 {
     private readonly IReadOnlyDictionary<string, IHandler> _handlers = new Dictionary<string, IHandler>
     {
-        { GetMenuQuery.Id, new GetMenuQuery.Handler(menuRepository) },
+        { GetMenuWithItemsQuery.Id, new GetMenuWithItemsQuery.Handler(menuRepository) },
         { GetAllOrdersByClientsQuery.Id, new GetAllOrdersByClientsQuery.Handler(orderRepository) }
     };
 

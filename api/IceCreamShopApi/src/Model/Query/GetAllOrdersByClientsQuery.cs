@@ -1,11 +1,12 @@
-using IceCreamShopApi.Model.ViewModel;
+using IceCreamShopApi.Model.Result;
 using IceCreamShopApi.Repository;
+using IResult = IceCreamShopApi.Model.Result.IResult;
 
-namespace IceCreamShopApi.Model.Logic.Query;
+namespace IceCreamShopApi.Model.Query;
 
 public class GetAllOrdersByClientsQuery : IRequest
 {
-    public const string Id = "GetOrdersQuery";
+    public const string Id = nameof(GetAllOrdersByClientsQuery);
     
     public string RequestId => Id;
     
@@ -16,11 +17,11 @@ public class GetAllOrdersByClientsQuery : IRequest
         public async Task<IResponse> HandleAsync(IRequest request)
         {
             var ordersByClients = await orderRepository.GetAllOrdersByClientsAsync();
-            var dictionary = new Dictionary<int, OrderByClientListViewModel>();
+            var dictionary = new Dictionary<int, OrderByClientListResult>();
             
             foreach (var order in ordersByClients)
             {
-                var orderByClient = new OrderByClientListViewModel.Adapter().Adapt(order);
+                var orderByClient = new OrderByClientListResult.Adapter().Adapt(order);
                 if (dictionary.TryGetValue(order.OrderId, out var viewModel))
                 {
                     viewModel.MergeWith(orderByClient);
@@ -29,12 +30,14 @@ public class GetAllOrdersByClientsQuery : IRequest
                 dictionary.Add(order.OrderId, orderByClient);
             }
             
-            return new Response(dictionary.Values);
+            return new Response(new OrderByClientMultipleListResult(dictionary.Values));
         }
     }
 
-    private record Response(IEnumerable<OrderByClientListViewModel> OrderByClientList) : IResponse
+    private record Response(OrderByClientMultipleListResult Result) : IResponse
     {
-        public string Message => !OrderByClientList.Any() ? "No Order found" : "Found orders";
+        public IResult ResponseData => Result;
+        
+        public string Message => !Result.Any() ? "No Order found" : "Found orders";
     }
 }

@@ -1,4 +1,4 @@
-namespace IceCreamShopApi.Model.Data;
+namespace IceCreamShopApi.Repository.Data;
 
 public record MenuWithItem(int MenuId, string MenuName, string Flavor, float Price) : IData
 {

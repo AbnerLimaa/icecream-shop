@@ -1,6 +1,6 @@
 using System.Data;
 using Dapper;
-using IceCreamShopApi.Model.Data;
+using IceCreamShopApi.Repository.Data;
 using Npgsql;
 
 namespace IceCreamShopApi.Repository;

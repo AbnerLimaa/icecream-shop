@@ -1,4 +1,4 @@
-namespace IceCreamShopApi.Model.Data;
+namespace IceCreamShopApi.Repository.Data;
 
 public record OrderByClient(int OrderId, string ClientName, string Flavor, float UnitPrice, int Quantity, DateTime OrderDate) : IData
 {

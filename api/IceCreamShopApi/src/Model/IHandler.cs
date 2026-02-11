@@ -1,6 +1,4 @@
-using IceCreamShopApi.Model.ViewModel;
-
-namespace IceCreamShopApi.Model.Logic;
+namespace IceCreamShopApi.Model;
 
 public interface IHandler
 {
