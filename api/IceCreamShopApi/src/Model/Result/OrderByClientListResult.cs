@@ -48,7 +48,7 @@ public class OrderByClientListResult : IResult
                 orderId: source.OrderId, 
                 clientName: source.ClientName, 
                 orderDate: orderDate, 
-                totalPrice: source.UnitPrice, 
+                totalPrice: source.UnitPrice * source.Quantity, 
                 items: new List<OrderByClientResult> { item });
         }
     }

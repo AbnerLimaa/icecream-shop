@@ -1,6 +1,5 @@
 using IceCreamShopApi.Model.Result;
 using IceCreamShopApi.Repository;
-using IResult = IceCreamShopApi.Model.Result.IResult;
 
 namespace IceCreamShopApi.Model.Query;
 
@@ -26,8 +25,6 @@ public class GetMenuWithItemsQuery(int menuId) : IRequest
 
     private record Response(MenuWithItemListResult Result, int MenuId) : IResponse
     {
-        public IResult ResponseData => Result;
-        
         public string Message => Result.Items.Count == 0 ? $"No Menu found for menuId: {MenuId}" : $"Found menu with id: {MenuId}";
     }
 }

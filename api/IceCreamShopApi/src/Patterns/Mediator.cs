@@ -15,7 +15,7 @@ public class Mediator(MenuRepository menuRepository, OrderRepository orderReposi
     public async Task<IResponse> MediateAsync(IRequest request)
     {
         if (!_handlers.TryGetValue(request.RequestId, out var handler))
-            return new NoHandlerResponse();
+            throw new NotImplementedException($"Handler {request.RequestId} not implemented");
         
         return await handler.HandleAsync(request);
     }

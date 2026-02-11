@@ -1,6 +1,5 @@
 using IceCreamShopApi.Model.Result;
 using IceCreamShopApi.Repository;
-using IResult = IceCreamShopApi.Model.Result.IResult;
 
 namespace IceCreamShopApi.Model.Query;
 
@@ -36,8 +35,6 @@ public class GetAllOrdersByClientsQuery : IRequest
 
     private record Response(OrderByClientMultipleListResult Result) : IResponse
     {
-        public IResult ResponseData => Result;
-        
-        public string Message => !Result.Any() ? "No Order found" : "Found orders";
+        public string Message => !Result.Any() ? "No order found" : $"Found {Result.Count()} orders";
     }
 }
