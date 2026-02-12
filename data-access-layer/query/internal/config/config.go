@@ -2,7 +2,6 @@ package config
 
 import (
 	"log"
-	"os"
 	"sync"
 
 	"github.com/joho/godotenv"
@@ -21,24 +20,15 @@ var (
 
 func Load() *EnvironmentConfig {
 	once.Do(func() {
-		environment := os.Getenv("GO_ENV")
-		if environment == "" {
-			environment = "development"
-		}
-
-		err := godotenv.Load(".env." + environment)
-		if err != nil {
-			log.Fatalf("error loading .env file: %v", err)
-			return
-		}
+		_ = godotenv.Load(".env.local")
 
 		var ec EnvironmentConfig
-		err = envconfig.Process("", &ec)
+		err := envconfig.Process("", &ec)
 		if err != nil {
 			log.Fatalf("error loading EnvironmentConfig data: %v", err)
 		}
-
 		environmentConfig = &ec
+
 		log.Println("configuration loaded successfully!")
 	})
 

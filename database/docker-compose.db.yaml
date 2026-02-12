@@ -1,17 +1,17 @@
+name: icecreamshop-stack
+
 services:
-  icecreamshop-postgresql-db:
-    image: postgres:latest
-    container_name: icecreamshop-postgresql-db
-    environment:
-      POSTGRES_USER: icecreamshopadmin
-      POSTGRES_PASSWORD: icecreamshop123
-      POSTGRES_DB: icecreamshop-db
+  main-db:
+    image: postgres:16-alpine
+    container_name: main-db
+    env_file:
+      - .env.development
     ports:
       - "5432:5432"
     volumes:
       - icecreamshop_data:/var/lib/postgresql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U icecreamshopadmin -d icecreamshop-db"]
       interval: 5s
       timeout: 5s
       retries: 5

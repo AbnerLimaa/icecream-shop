@@ -1,0 +1,16 @@
+name: icecreamshop-stack
+
+services:
+  api:
+    build: .
+    container_name: api
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env.development
+    networks:
+      - icecreamshop-network
+
+networks:
+  icecreamshop-network:
+    external: true

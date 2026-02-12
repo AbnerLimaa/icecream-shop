@@ -1,2 +1,2 @@
 #!/bin/zsh
-docker exec -it icecreamshop-postgresql-db bash
+docker exec -it icecreamshop-db bash

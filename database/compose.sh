@@ -1,2 +1,2 @@
 #!/bin/zsh
-docker compose -f docker-compose.db.yml up -d
+docker compose -f docker-compose.db.yaml up -d --build main-db

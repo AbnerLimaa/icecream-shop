@@ -1,0 +1,16 @@
+name: icecreamshop-stack
+
+services:
+  dal-query:
+    build: .
+    container_name: dal-query
+    ports:
+      - "50051:50051"
+    env_file:
+      - .env.development
+    networks:
+      - icecreamshop-network
+
+networks:
+  icecreamshop-network:
+    external: true

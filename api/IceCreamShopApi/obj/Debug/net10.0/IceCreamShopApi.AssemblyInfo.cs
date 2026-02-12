@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IceCreamShopApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5b5692bf8f7002d0cbcd8630915b9f6cf20282c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+303ab0ebbe0d729bb3c1d2ebaa4f933ac0e83771")]
 [assembly: System.Reflection.AssemblyProductAttribute("IceCreamShopApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IceCreamShopApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,28 @@
+# Git files
+.git
+.gitignore
+
+# Build binaries
+bin/
+obj/
+dal-query-service
+*.exe
+*.out
+
+# Go specific
+vendor/
+pkg/
+
+# Docker files
+Dockerfile
+docker-compose*
+.dockerignore
+
+# IDE settings
+.idea/
+.vscode/
+*.swp
+
+# Logs and Temp files
+*.log
+tmp/

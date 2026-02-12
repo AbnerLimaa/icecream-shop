@@ -92,3 +92,13 @@ values (1, 1, '2026-02-01', 6, 3),
 select * from tb_menus;
 select * from tb_menu_items;
 select * from tb_clients;
+
+select menu.menu_name, items.flavor, items.price
+from tb_menu_items as items
+inner join tb_menus as menu on items.menu_id = menu.menu_id
+where items.menu_id=1;
+
+select orders.order_id, clients.client_name, items.flavor, orders.quantity, orders.order_date
+from tb_orders as orders
+inner join tb_menu_items items on orders.menu_item_id = items.menu_item_id
+inner join tb_clients clients on orders.client_id = clients.client_id;
