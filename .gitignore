@@ -3,3 +3,10 @@
 
 # Exception for .env.example in any directory
 !**/.env.example
+
+# Ignore dotnet bin and obj folder
+api/**/obj/
+api/**/bin/
+
+# Ignore dotnet user settings
+**/.DotSettings.user
