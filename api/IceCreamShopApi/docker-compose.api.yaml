@@ -13,4 +13,4 @@ services:
 
 networks:
   icecreamshop-network:
-    external: true
+    name: icecreamshop-network

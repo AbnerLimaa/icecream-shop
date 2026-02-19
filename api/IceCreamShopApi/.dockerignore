@@ -1,0 +1,37 @@
+# Ignore Source Control
+.git
+.gitignore
+.gitattributes
+
+# Ignore Local Build Artifacts (Crucial for .NET)
+**/bin/
+**/obj/
+**/out/
+
+# Ignore IDE & Editor Files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore Testing & Logging
+**/TestResults/
+*.log
+*.trx
+
+# Ignore Secrets & Local Configs (Safety First)
+**/*.usersettings
+**/appsettings.Development.json
+**/*.pfx
+**/*.pem
+.env
+.env.*
+! .env.example
+
+# Ignore Docker related files
+Dockerfile*
+docker-compose*
+.dockerignore

@@ -1,2 +1,2 @@
-#!/bin/zsh
-docker exec -it icecreamshop-db bash
+#!/bin/bash
+docker exec -it main-db bash
